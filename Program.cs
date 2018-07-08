@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace SwaggerDSL
@@ -26,6 +28,8 @@ namespace SwaggerDSL
                 services.AddSwaggerGen(c =>
                 {
                     c.SwaggerDoc("v1", new Info { Title = "API", Version = "v1" });
+                    var filePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "SwaggerDSL.xml");
+                    c.IncludeXmlComments(filePath);
                 });
             }
 

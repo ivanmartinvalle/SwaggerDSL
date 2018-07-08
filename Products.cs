@@ -22,6 +22,9 @@ namespace SwaggerDSL
 	{
 		public int ProductId { get; set; }
 
+		/// <summary>
+		/// A free-text description
+		/// </summary>
 		[Required]
 		public string Description { get; set; }
 	}
